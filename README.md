@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chat Frontend
 
-## Getting Started
+Frontend-часть клиентского приложения мессенджера (MVP),
+разрабатываемого в рамках стажировки и командной разработки.
 
-First, run the development server:
+Проект задумывался как основной продукт компании —
+мессенджер по типу WhatsApp / Telegram
+с возможностью интеграции дополнительных сервисов
+через единое меню приложения.
+
+> ⚠️ Репозиторий представлен в виде форка.  
+> Основная разработка велась в основном репозитории
+> через Pull Request и работу с ветками.
+
+---
+
+## 📌 О проекте
+
+A-Chat — клиентское веб-приложение мессенджера.
+Frontend разрабатывался отдельно от backend-части,
+которая велась другой командой на отдельном сервере.
+
+Проект находился в стадии **MVP**:
+реализовывались ключевые сценарии,
+архитектура и базовая инфраструктура приложения.
+
+---
+
+## 🧩 Моя роль в проекте
+
+**Frontend-разработчик / Team Lead (internship)**
+
+- участие в проектировании frontend-архитектуры
+- выбор и внедрение модульной архитектуры (FSD)
+- декомпозиция задач и координация работы команды
+- code review и работа с Pull Request
+- разработка ключевых модулей клиентского приложения
+- настройка proxy-взаимодействия с backend
+- участие в принятии технических решений по стеку
+- настройка и использование тестов (Vitest)
+
+Роль тимлида выполнялась фактически,
+ввиду отсутствия выделенного лидера в команде.
+
+---
+
+## 🔀 Примеры вклада
+
+Ниже приведены примеры изменений,
+отражающих мой вклад в развитие клиентского приложения,
+архитектуры и инфраструктуры проекта
+(работа велась через Pull Request и ветки в основном репозитории).
+
+### Архитектура и UI платформы
+- развитие и унификация карточек чатов и контактов  
+  (CardShell, CardHeader, общее поведение hover/active, selection)
+- выделение общих UI-блоков и токенов дизайн-системы  
+  (цвета иконок, типовые состояния)
+
+Пример изменений:  
+https://github.com/npukojiucm/chat-frontend-5/commit/057c21d49d87d5fd0e8f67a4e1d178a9a8a9bf96
+
+---
+
+### Работа с данными и API
+- нормализация API-ответов и доменных сущностей
+- внедрение Zod-схем для API и типизации данных
+- реализация API-слоя и infinite-загрузки через TanStack Query
+- маппинг API → entity для UI-слоя
+
+Примеры изменений:  
+https://github.com/npukojiucm/chat-frontend-5/commit/51001ccaa6bfa4c2b76890e2d54a5db87e20a933  
+https://github.com/npukojiucm/chat-frontend-5/commit/057c21d49d87d5fd0e8f67a4e1d178a9a8a9bf96
+
+---
+
+### Proxy и взаимодействие с backend
+- доработка proxy-маршрутов и корректная обработка ответов
+- исправление edge-кейсов (trailing slash, 204/304 без body)
+- унификация apiFetch для всех запросов приложения
+
+Примеры изменений:  
+https://github.com/npukojiucm/chat-frontend-5/commit/01937715b46fa7cb28bd6a0139b8aef100604563  
+https://github.com/npukojiucm/chat-frontend-5/commit/032071f60d033cb087338ff241336b923fe00a97
+
+---
+
+### Состояние, UX и бизнес-логика
+- оптимистичные обновления при удалении контактов
+- rollback при ошибках мутаций
+- нормализация работы списков (infinite data, mapping, filtering)
+- вынос логики экранов в кастомные хуки
+
+Примеры изменений:  
+https://github.com/npukojiucm/chat-frontend-5/commit/01937715b46fa7cb28bd6a0139b8aef100604563
+
+---
+
+### Инфраструктура и качество кода
+- настройка тестовой инфраструктуры (Vitest, Testing Library)
+- добавление unit-тестов для shared UI-компонентов
+- настройка CI с параллельным запуском lint / test / build
+- поддержка eslint / prettier конфигурации
+
+Примеры изменений:  
+https://github.com/npukojiucm/chat-frontend-5/commit/fcd2092535cc407b1bf9ba6b9f4552333ebeb3c4
+
+---
+
+## 🛠 Используемый стек
+
+- **Next.js**
+- **TypeScript**
+- **TanStack Query**
+- **Zod**
+- **Zustand**
+- **SCSS modules**
+- **Vitest**
+
+---
+
+## 🏗 Архитектура
+
+- модульная архитектура **Feature-Sliced Design (FSD)**
+- разделение на модули: conversation, contacts, chats, shared и др.
+- взаимодействие с backend через **proxy-слой**
+- строгая типизация данных
+- валидация входящих данных через Zod
+
+---
+
+## 🧪 Тестирование
+
+- unit-тесты на **Vitest**
+- тестирование UI-компонентов и бизнес-логики
+- настройка тестовой инфраструктуры проекта
+
+---
+
+## 🤝 Командная разработка
+
+- команды по ~4 человека
+- вся работа велась **через Pull Request**
+- основная ветка — `dev`
+- обсуждение решений и код-ревью внутри команды
+- работа непосредственно в основном репозитории проекта
+
+---
+
+## 🚀 Запуск проекта
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ℹ️ Примечание
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Проект разрабатывался в рамках стажировки.
+Трудоустройство по завершении не гарантировалось.
+Репозиторий представлен для демонстрации
+личного вклада в командную разработку и архитектурные решения.
